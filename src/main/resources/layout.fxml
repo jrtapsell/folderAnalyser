@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uk.co.jrtapsell.file_analyser.jfx.JFXView">
+    <Button fx:id="folderButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Select Folder" VBox.vgrow="NEVER" />
+   <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" VBox.vgrow="NEVER">
+      <children>
+         <Slider fx:id="countSlider" majorTickUnit="5.0" max="21.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" min="1.0" minorTickCount="4" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="8.0" HBox.hgrow="ALWAYS" />
+         <Label fx:id="countLabel" text="Label" />
+      </children>
+   </HBox>
+    <GridPane fx:id="chartArea" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" visible="false" VBox.vgrow="ALWAYS">
+  <columnConstraints>
+    <ColumnConstraints />
+    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+  </columnConstraints>
+  <rowConstraints>
+    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
+    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
+  </rowConstraints>
+   <children>
+      <PieChart fx:id="folderChart" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+      <PieChart fx:id="typeChart" GridPane.columnIndex="2" GridPane.rowIndex="0" />
+      <PieChart fx:id="rawChart" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+      <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
+         <children>
+            <Label fx:id="totalSizeTitle" alignment="TOP_CENTER" maxWidth="1.7976931348623157E308" styleClass="titleLabel" text="Total Size">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="totalLabel" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="UKNOWN" VBox.vgrow="ALWAYS">
+               <font>
+                  <Font size="36.0" />
+               </font></Label>
+         </children>
+      </VBox>
+   </children>
+</GridPane>
+</VBox>

@@ -1,0 +1,4 @@
+.titleLabel, .chart-title {
+    -fx-font-weight: 900 ;
+    -fx-font-size: 3em;
+}
