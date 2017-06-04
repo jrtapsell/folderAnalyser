@@ -6,5 +6,5 @@ import uk.co.jrtapsell.file_analyser.common.View
 
 fun main(args: Array<String>) {
     val c = Controller(CLIView(), Model())
-        c.loadNewDirectory(null)
+    c.loadNewDirectory()
 }

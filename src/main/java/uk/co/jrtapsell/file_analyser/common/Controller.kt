@@ -1,29 +1,27 @@
 package uk.co.jrtapsell.file_analyser.common
 
-import java.util.function.Consumer
-
 class Controller(val view: uk.co.jrtapsell.file_analyser.common.View, val model: Model) {
 
     init {
-        view.setOnLoad(Consumer { loadNewDirectory(it) })
-        view.setOnUpdate(Consumer { reloadDirectory(it) })
+        view.setOnLoad{ loadNewDirectory() }
+        view.setOnUpdate{ reloadDirectory() }
     }
 
     val sorter : Comparator<DataPair> = Comparator.comparingDouble<DataPair> { p -> p.value}.reversed()
 
     var currentData: List<MeasuredFile>? = null
 
-    fun loadNewDirectory(limit: Long?) {
+    fun loadNewDirectory() {
         var folder: java.io.File = view.chooseDirectory() ?: return
         var data = loadData(folder)
         currentData = data
-        update(data, limit)
+        update(data, view.getLimit())
     }
 
-    fun reloadDirectory(limit: Long?) {
+    fun reloadDirectory() {
         val temp = currentData
         if (temp != null) {
-            update(temp, limit)
+            update(temp, view.getLimit())
         }
     }
 

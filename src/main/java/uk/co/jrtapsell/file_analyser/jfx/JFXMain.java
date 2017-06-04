@@ -9,9 +9,11 @@ import uk.co.jrtapsell.file_analyser.common.Controller;
 import uk.co.jrtapsell.file_analyser.common.Model;
 
 public class JFXMain extends Application {
+
   public static void main(final String... args) {
     launch(args);
   }
+
   public void start(Stage primaryStage) throws Exception {
     FXMLLoader loader = new FXMLLoader(getClass().getResource("/layout.fxml"));
     final VBox loadedRoot = loader.load();

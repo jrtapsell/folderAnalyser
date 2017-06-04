@@ -3,17 +3,20 @@ package uk.co.jrtapsell.file_analyser.cli
 import uk.co.jrtapsell.file_analyser.common.DataPair
 import uk.co.jrtapsell.file_analyser.common.View
 import java.io.File
-import java.util.function.Consumer
 import java.util.stream.Stream
 
 /**
  * @author James Tapsell
  */
 class CLIView: View {
-    override fun setOnLoad(function: Consumer<Long?>) {
+    override fun getLimit(): Long? {
+        return null
     }
 
-    override fun setOnUpdate(function: Consumer<Long?>) {
+    override fun setOnLoad(function: () -> Unit) {
+    }
+
+    override fun setOnUpdate(function: () -> Unit) {
     }
 
     override fun chooseDirectory(): File {

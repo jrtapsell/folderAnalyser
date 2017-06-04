@@ -14,6 +14,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.layout.GridPane;
 import javafx.stage.DirectoryChooser;
+import kotlin.Unit;
+import kotlin.jvm.functions.Function0;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import uk.co.jrtapsell.file_analyser.common.DataPair;
 import uk.co.jrtapsell.file_analyser.common.View;
@@ -30,6 +33,12 @@ public class JFXView implements View {
   @FXML public Label countLabel;
 
   private Long limit;
+
+  @Nullable
+  @Override
+  public Long getLimit() {
+    return limit;
+  }
 
   public void setDataVisible(boolean state) {
     chartArea.setVisible(state);
@@ -64,7 +73,7 @@ public class JFXView implements View {
     return dc.showDialog(null);
   }
 
-  @Nullable private Consumer<Long> onUpdate;
+  @Nullable private Function0<Unit> onUpdate;
 
   private void onSlide(ObservableValue<? extends Number> v, Number o, Number n) {
     System.out.println(n);
@@ -77,7 +86,7 @@ public class JFXView implements View {
       limit = value;
     }
     if (onUpdate != null) {
-      onUpdate.accept(limit);
+      onUpdate.invoke();
     }
   }
 
@@ -87,14 +96,14 @@ public class JFXView implements View {
   }
 
   @Override
-  public void setOnLoad(Consumer<Long> function) {
+  public void setOnLoad(@NotNull Function0<Unit> function) {
     folderButton.setOnMouseClicked(event -> {
-      function.accept(limit);
+      function.invoke();
     });
   }
 
   @Override
-  public void setOnUpdate(Consumer<Long> function) {
+  public void setOnUpdate(@NotNull Function0<Unit> function) {
     this.onUpdate = function;
   }
 
